@@ -13,3 +13,6 @@ Min tanke är också att det ska gå att välja alla meddelanden, oberoende av r
 
 ## Länk till projekt och kanban-bräde på GitHub
 >https://github.com/users/NikBjo72/projects/1/views/1
+
+## Bider på kanban-bräde och annan dokumentation
+>Ligger i mappen /Documentation

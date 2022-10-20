@@ -1,0 +1,16 @@
+###############
+# UI-ClientApp #
+###############
+node_modules
+dist
+.parcel-cache
+###############
+# Directories #
+###############
+bin/
+obj/
+TestResults/
+###############
+# OS generated files #
+###############
+.DS_Store
