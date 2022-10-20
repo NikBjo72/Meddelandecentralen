@@ -6,6 +6,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+.DS_Store
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -23,6 +24,7 @@ bin/
 Bin/
 obj/
 Obj/
+TestResults/
 
 # Visual Studio 2015 cache/options directory
 .vs/
@@ -179,8 +181,10 @@ ClientBin/
 *.pfx
 *.publishsettings
 orleans.codegen.cs
-
-/node_modules
+# Client App #
+node_modules
+dist
+.parcel-cache
 
 # RIA/Silverlight projects
 Generated_Code/
