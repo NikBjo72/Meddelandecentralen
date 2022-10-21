@@ -11,8 +11,16 @@ För att genomföra sparad rumsstatus och sparade meddelanden krävs dock en dat
 Vid val av de olika rummen/utrymmena så ska det dock fungera att skriva realtidsmeddelanden, söka och filtrera.   
 Min tanke är också att det ska gå att välja alla meddelanden, oberoende av rumsindelning. Detta för att kunna söka på en specifik hashtag för alla rummen. T.ex. #vattenläcka, då kommer alla meddelanden med den taggen upp samt vilket rum. På det viset går det få en samlad bild ifall det är vattenläckor i flera rum, eller kanske bara ett rum. Denna del ligger dock som prioritering två, då det viktigaste är att få rummen/utrymmena att fungera med dess meddelandefunktioner.
 
-## Länk till projekt och kanban-bräde på GitHub
->https://github.com/users/NikBjo72/projects/1/views/1
+## Inlämningsinformation
+>Länk till kanban-bräde och projekt på GitHub: https://github.com/users/NikBjo72/projects/1/views/1   
+>Bilder på kanban-bräde ligger i mappen: /Documentation/Kanban-board-status   
+>Klassdiagram ligger i mappen: /Documentation/Diagram/MDC-klassdiagram-v1.pdf   
 
-## Bider på kanban-bräde och annan dokumentation
->Ligger i mappen /Documentation
+## Artifakter och dokumentation finns i mappen /Documentation
+>• Diagram (klassdiagran UI och WBS för API)   
+>• Visuell design för UI   
+>• Kanban-brädets statusbilder   
+>• HTML-mockup på den visuella designen   
+
+## Länk till visuell design i Figma
+>https://www.figma.com/proto/JBu3K39ppmRJWF5s72Irpp/Meddelandecentralen?node-id=2%3A4&scaling=scale-down&page-id=0%3A1&starting-point-node-id=2%3A4

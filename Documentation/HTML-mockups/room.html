@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <title>Room</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div id="headerRow" class="row sticky-top">
+            <div class="col-sm-12">
+                <div class="row">
+                    <img id="geoIcon" src="../../ClientApp/Media/geo-alt-fill.svg" alt="Användarikon">
+                    <div id="roomName" class="text-white h2 col">Köket</div>
+                    <div class="col-3 text-center ">
+                        <img id="executedIcon" class="statusIcon" src="../../ClientApp/Media//on-hold.png"
+                            alt="Statusikon">
+                        <div class="text-white small text-center">Väntande</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="filterAndSearchRow" class="row sticky-top">
+            <div class="input-group">
+                <img id="sortIcon" src="../../ClientApp/Media/sort-down-alt.svg" alt="Hem">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="searchInputGroup">
+                        <img id="searchIcon" src="../../ClientApp/Media/search.svg" alt="Hem">
+                    </span>
+                </div>
+                <input id="searchInput" type="text" class="form-control" placeholder="Sök..." aria-label="Username"
+                    aria-describedby="basic-addon1">
+            </div>
+        </div>
+        <hr class="rounded black">
+        <div class="row right">
+            <div class="box sb-right">
+                <div class="messageHeader">
+                    <small class="messageAuthor">Niklas Björk</small>
+                    <small class="timestamp">2022-10-12 19:15</small>
+                </div>
+                <p class="message">
+                Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+            </div>
+        </div>
+        <div class="row left">
+            <div class="box sb-left newMessage">
+                <div class="messageHeader">
+                    <small class="messageAuthor">Viktor Lyresten</small>
+                    <small class="timestamp">2022-10-13 12:01</small>
+                </div>
+                Donec ullamcorper nulla non metus auctor fringilla. Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Curabitur blandit tempus porttitor.
+            </div>
+        </div>
+        <div class="row right">
+            <div class="box sb-right">
+                <div class="messageHeader">
+                    <small class="messageAuthor">Niklas Björk</small>
+                    <small class="timestamp">2022-10-12 19:15</small>
+                </div>
+                <p class="message">
+                Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+            </div>
+        </div>
+        <div class="row left">
+            <div class="box sb-left newMessage">
+                <div class="messageHeader">
+                    <small class="messageAuthor">Viktor Lyresten</small>
+                    <small class="timestamp">2022-10-13 12:01</small>
+                </div>
+                Donec ullamcorper nulla non metus auctor fringilla. Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Curabitur blandit tempus porttitor.
+            </div>
+        </div>
+        <div class="row right">
+            <div class="box sb-right">
+                <div class="messageHeader">
+                    <small class="messageAuthor">Niklas Björk</small>
+                    <small class="timestamp">2022-10-12 19:15</small>
+                </div>
+                <p class="message">
+                Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+            </div>
+        </div>
+
+
+        <div id="footerRow" class="row fixed-bottom">
+            <div class="input-group mb-3">
+                <img id="addMessageIcon" src="../../ClientApp/Media/plus-circle.svg" alt="Lägg till meddelande">
+                <input id="inputNewMessage" type="text" class="form-control" placeholder="Nytt meddelande..."
+                    aria-label="Username">
+            </div>
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col text-center">
+                        <img class="footerIcons" src="../../ClientApp/Media/house.svg" alt="Hem">
+                    </div>
+                    <div class="col text-center">
+                        <img class="footerIcons" src="../../ClientApp/Media/chat-square-text.svg"
+                            alt="Alla meddelanden">
+                    </div>
+                    <div class="col text-center">
+                        <img class="footerIcons" src="../../ClientApp/Media/box-arrow-right.svg" alt="Avsluta">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,213 @@
+/* Landingpage */
+body {
+    background-color: #484848;
+    margin-bottom: 10rem;
+}
+
+#chatBubbles {
+    width: 100%;
+    padding: 4rem 0rem 4rem 0rem;
+}
+
+.landingPageCol {
+    padding: 0rem 2rem 0rem 2rem;
+}
+
+#connectBtn {
+    float: right !important;
+    padding: .5rem 2rem .5rem 2rem;
+}
+
+#connectContainer {
+    margin-top: 4rem;
+}
+
+/* Homepage */
+#headerRow {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 1rem 1rem 1rem .5rem;
+}
+
+#userIcon {
+    width: 5rem;
+    height: auto;
+}
+
+#userName {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.white {
+    border-top: 1px solid rgb(255, 255, 255);
+    opacity: inherit;
+}
+
+.statusIcon {
+    width: 3rem;
+    height: auto;
+    padding: 5px;
+}
+
+.roomRaw {
+    padding: .7rem .7rem .7rem .5rem;
+    background-color: #7697B5;
+    margin-top: 1.3rem;
+    box-shadow: 4px 4px 4px rgb(50, 50, 50);
+    cursor: pointer;
+}
+
+.roomStatusIcon {
+    width: 4.5rem;
+    height: auto;
+    filter: drop-shadow(2px 2px 2px rgb(50, 50, 50));
+}
+
+.newMessages {
+    margin-top: -1.5rem;
+    float: right;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: .1rem;
+    background-color: red;
+    border-radius: 50%;
+    text-align: center;
+}
+
+#footerRow {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 1rem 1rem 1rem .5rem;
+}
+
+.footerIcons {
+    width: 4rem;
+    height: auto;
+    padding: 5px;
+    cursor: pointer;
+}
+
+#addMessageIcon {
+    width: 2rem;
+    height: auto;
+    margin-left: .7rem;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+#inputNewRoom {
+    margin-right: .6rem;
+    padding: .5rem;
+}
+
+/* Roompage */
+#filterAndSearchRow {
+    top: 7.3rem;
+}
+
+.black {
+    border-top: 1px solid rgb(0, 0, 0);
+    opacity: inherit;
+}
+
+#geoIcon {
+    width: 5rem;
+    height: auto;
+}
+
+#roomName {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#sortIcon {
+    width: 2.8rem;
+    height: auto;
+    margin-right: 1.2rem;
+    margin-left: .8rem;
+    filter: drop-shadow(2px 2px 2px rgb(50, 50, 50));
+    cursor: pointer;
+}
+
+#filterAndSearchRow {
+    margin-top: 1rem;
+}
+
+#searchIcon {
+    width: 2rem;
+    height: auto;
+    cursor: pointer;
+}
+
+#searchInputGroup {
+    background-color: white !important;
+}
+
+#searchInput {
+    margin-right: 1rem;
+}
+
+#inputNewMessage {
+    margin-right: .6rem;
+    padding: .5rem;
+}
+
+.right {
+    margin-right: .8rem;
+    margin-left: 3.8rem;
+    }
+
+.left {
+margin-right: 3.8rem;
+margin-left: .8rem;
+}
+
+.box {
+    margin: .8rem auto;
+    background: #ffffff;
+    padding: 1rem;
+    color: rgb(0, 0, 0);
+    position: relative;
+    border-radius: 5px;
+}
+.newMessage {
+    border: #2c7cc8 solid 4px;
+}
+
+.sb-right:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 10px solid transparent;
+    border-right: 10px solid #ffffff;
+    border-top: 10px solid #ffffff;;
+    border-bottom: 10px solid transparent;
+    right: 19px;
+    bottom: -19px;
+}
+
+.sb-left:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 10px solid #ffffff;;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #ffffff;;
+    border-bottom: 10px solid transparent;
+    left: 19px;
+    bottom: -19px;
+}
+
+.messageHeader {
+    margin-bottom: .6rem;
+}
+
+.messageAuthor {
+    font-weight: 900;
+    margin-right: 1rem;
+}
+.timestamp {
+    font-style: italic;
+}
+
