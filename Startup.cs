@@ -1,7 +1,6 @@
 using System;
 using System.Reflection;
 using Hubs;
-using Hubs.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -39,8 +38,6 @@ namespace Meddelandecentralen
 
             services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddScoped<IMessageService, MessageService>();
-
-            services.AddScoped<IActionHub, ActionHub>();
 
             services.AddCors(options => options.AddPolicy("AllowEverything", builder => builder
                 .AllowAnyOrigin()

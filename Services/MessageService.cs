@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Domain.Entities;
-using Hubs.Interfaces;
 using Persistence.Interfaces;
 using Services.Interfaces;
 
@@ -14,7 +13,6 @@ namespace Services
     {
         private IRoomRepository _roomRepository;
         private IMessageRepository _messageRepository;
-        private IActionHub _actionHub;
         private IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
@@ -22,14 +20,12 @@ namespace Services
         (
             IRoomRepository roomRepository,
             IMessageRepository messageRepository,
-            IActionHub actionHub,
             IUnitOfWork unitOfWork,
             IMapper mapper
         )
         {
             _roomRepository = roomRepository;
             _messageRepository = messageRepository;
-            _actionHub = actionHub;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
@@ -66,7 +62,6 @@ namespace Services
         {
             _messageRepository.Edit(message);
             int response = await _unitOfWork.CompleteAsync();
-            await _actionHub.NotifyNewMessage(message);
             return message;
         }
 

@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Domain.Entities;
 using Services.Interfaces;
-using Hubs.Interfaces;
 
 namespace Controllers
 {
@@ -16,19 +15,16 @@ namespace Controllers
     {
         private readonly IRoomService _roomService;
         private readonly IMessageService _messageService;
-        private IActionHub _actionHub;
         private IWebHostEnvironment _hostingEnvironment;
 
         public MessagesController(
             IRoomService roomService,
             IMessageService messageService,
-            IActionHub actionHub,
             IWebHostEnvironment environment
         )
         {
             _roomService = roomService;
             _messageService = messageService;
-            _actionHub = actionHub;
             _hostingEnvironment = environment;
         }
 
@@ -40,7 +36,6 @@ namespace Controllers
                 try
                 {
                     var response = await _messageService.CreateMessage(model);
-                    _actionHub.NotifyNewMessage(response);
                     return response;
                 }
                 catch (Exception ex)
