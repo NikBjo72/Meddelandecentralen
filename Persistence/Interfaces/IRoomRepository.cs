@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 using Domain.Entities;
 using Domain.Interfaces;
 
-namespace mycv.API.Persistence.Interfaces
+namespace Persistence.Interfaces
 {
-    public interface ICvRepository
+    public interface IRoomRepository
     {
-        public IQueryable<Cv> QueryableCv();
-        public Task AddAsync(Cv cv);
-        public void Edit(Cv cv);
-        public void Delete(string cvId);
-        public Cv GetById(string cvId);
+        public IQueryable<Room> QueryableRoom();
+        public Task AddAsync(Room room);
+        public void Edit(Room room);
+        public void Delete(string roomId);
+        public Room GetById(string roomId);
 
     }
 }

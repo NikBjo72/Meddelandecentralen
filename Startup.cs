@@ -1,14 +1,19 @@
 using System;
+using System.Reflection;
+using Hubs;
+using Hubs.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Persistence.Contexts;
+using Persistence.Interfaces;
+using Persistence.Repositories;
+using Services;
+using Services.Interfaces;
 
 namespace Meddelandecentralen
 {
@@ -27,13 +32,32 @@ namespace Meddelandecentralen
             services.AddDbContext<AppDbContext>(options =>
 	            options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddScoped<IRoomRepository, RoomRepository>();
+            services.AddScoped<IRoomService, RoomService>();
+
+            services.AddScoped<IMessageRepository, MessageRepository>();
+            services.AddScoped<IMessageService, MessageService>();
+
+            services.AddScoped<IActionHub, ActionHub>();
+
+            services.AddCors(options => options.AddPolicy("AllowEverything", builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                ));
+
             services.AddControllersWithViews();
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +78,8 @@ namespace Meddelandecentralen
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
+            app.UseCors("AllowEverything");
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
@@ -61,6 +87,8 @@ namespace Meddelandecentralen
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
+                
+                endpoints.MapHub<ActionHub>("/actionhub");
             });
 
             app.UseSpa(spa =>

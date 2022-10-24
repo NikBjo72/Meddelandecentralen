@@ -8,6 +8,7 @@
 *.sln.docstates
 .DS_Store
 .vscode
+Application.db
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
