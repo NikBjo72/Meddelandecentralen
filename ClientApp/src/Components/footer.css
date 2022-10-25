@@ -1,0 +1,24 @@
+#footerRow {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 1rem 1rem 1rem .5rem;
+}
+
+.footerIcons {
+    width: 4rem;
+    height: auto;
+    padding: 5px;
+    cursor: pointer;
+}
+
+#addMessageIcon {
+    width: 2rem;
+    height: auto;
+    margin-left: .7rem;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+#inputNewRoom {
+    margin-right: .6rem;
+    padding: .5rem;
+}

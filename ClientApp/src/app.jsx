@@ -8,6 +8,7 @@ import Home from './Components/home';
 import Room from './Components/room';
 import { Routes, Route, Outlet } from "react-router-dom";
 import PageLayout from './Components/pageLayout';
+import AllMessages from './Components/all-messages';
 
 const App = () => {
     const { loggedIn } = useUser();
@@ -24,17 +25,6 @@ const App = () => {
         });
     }
 
-    const newRoomHandler = () => {
-        var room = {
-            Status: "executed",
-            Name: "Konferansrum Kråkan",
-            Timestamp: "2022-10-13T12:01:00",
-        }
-        connection.invoke("NotifyNewRoom", room).catch(function (err) {
-            return console.error(err.toString());
-        });
-    }
-
     return (
         <MessageContextProvider>
             <>
@@ -43,6 +33,7 @@ const App = () => {
                         <Routes>
                             <Route path="/" element={<PageLayout />}>
                                 <Route path="/home" element={<Home />} />
+                                <Route path="/all-messages" element={<AllMessages />} />
                                 <Route path="/room/:roomId" element={<Room />} />
                             </Route>
                         </Routes>
@@ -51,7 +42,6 @@ const App = () => {
                     <Landingpage />
                 }
                 <button onClick={newMessageHandler}>New Message</button>
-                <button onClick={newRoomHandler}>New Room</button>
             </>
         </MessageContextProvider>
     );

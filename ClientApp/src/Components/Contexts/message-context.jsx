@@ -1,14 +1,20 @@
 import React, { useState, useEffect, useContext, createContext } from 'react';
+import { GetMessages } from '../../Model/Service/api-request';
 import { connection, startConnection } from '../../Model/Service/signalr-connection';
 
 const MessageContext = createContext();
 
 export const MessageContextProvider = (props) => {
-  const [latestMessage, setLatestMessage] = useState()
+  const [messages, setMessages] = useState()
 
   useEffect(() => {
+
+    (async () => {
+      setMessages(await GetMessages());
+    })();
+
     connection.on("RecieveMessage", (message) => {
-      setLatestMessage(message);
+      setMessages((messages) => [...messages, message]);
     });
     if(connection.state != "Connected") {
       startConnection().catch((err) => {
@@ -18,13 +24,13 @@ export const MessageContextProvider = (props) => {
   },[]);
 
   useEffect(() => {
-    console.log('latestMessage:', latestMessage);
-  }, [latestMessage]);
+    console.log('All messages from context:', messages);
+  }, [messages]);
 
   return (
     <MessageContext.Provider
       value={{
-        latestMessage: latestMessage
+        messages: messages
       }}
     >
       {props.children}

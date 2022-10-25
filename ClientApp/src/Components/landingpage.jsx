@@ -16,10 +16,6 @@ export const Landingpage = (props) => {
         setLoggedIn(true);
     }
 
-    useEffect(() => {
-        console.log('input:', input);
-    })
-
     return (
         <div className="container-fluid">
         <div className="row">

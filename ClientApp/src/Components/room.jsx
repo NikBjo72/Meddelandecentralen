@@ -2,78 +2,57 @@ import React, { useState, useEffect, useRef, } from 'react';
 import './room.css';
 import imageUrl from '../Model/Service/images';
 import useRoom from './Contexts/room-context';
+import useMessage from './Contexts/message-context';
 import { useLocation } from 'react-router-dom';
 import RoomHeader from './room-header';
+import Footer from './footer';
+import Message from './message';
 
 export const Room = (props) => {
     const { rooms } = useRoom();
+    const { messages } = useMessage();
     const location = useLocation();
     const [roomId, setRoomId] = useState(location.pathname.split('/')[2]);
     const [thisRoom, setThisRoom] = useState();
+    const [thisRoomsMessages, setThisRoomsMessages] = useState([]);
 
     useEffect(() => {
         if(rooms) {
             setThisRoom(rooms.find(r => r.roomId === roomId));
         }
-        console.log('location', location);
-        console.log('roomId', roomId);
-    },[rooms])
+        if(messages) {
+            setThisRoomsMessages(messages.filter(m => m.roomId === roomId));
+        }
+    },[rooms, messages])
 
-    if (thisRoom) {
+    const determineRowSide = (index) => {
+        if(index % 2==0){
+            return 'left';
+         }
+         else {
+            return 'right'
+         } 
+    }
+
+    const determineBoubbleTagSide = (index) => {
+        if(index % 2==0){
+            return 'sb-left';
+         }
+         else {
+            return 'sb-right'
+         } 
+    }
+
+    if (thisRoom && thisRoomsMessages.length > 0) {
         return (
             <div className="container-fluid">
                 <RoomHeader thisRoom={thisRoom} />
-                <div className="row right">
-                    <div className="box sb-right">
-                        <div className="messageHeader">
-                            <small className="messageAuthor">Niklas Björk</small>
-                            <small className="timestamp">2022-10-12 19:15</small>
-                        </div>
-                        <p className="message">
-                            Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        </p>
-                    </div>
-                </div>
-                <div className="row left">
-                    <div className="box sb-left newMessage">
-                        <div className="messageHeader">
-                            <small className="messageAuthor">Viktor Lyresten</small>
-                            <small className="timestamp">2022-10-13 12:01</small>
-                        </div>
-                        Donec ullamcorper nulla non metus auctor fringilla. Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Curabitur blandit tempus porttitor.
-                    </div>
-                </div>
-                <div className="row right">
-                    <div className="box sb-right">
-                        <div className="messageHeader">
-                            <small className="messageAuthor">Niklas Björk</small>
-                            <small className="timestamp">2022-10-12 19:15</small>
-                        </div>
-                        <p className="message">
-                            Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        </p>
-                    </div>
-                </div>
-                <div className="row left">
-                    <div className="box sb-left newMessage">
-                        <div className="messageHeader">
-                            <small className="messageAuthor">Viktor Lyresten</small>
-                            <small className="timestamp">2022-10-13 12:01</small>
-                        </div>
-                        Donec ullamcorper nulla non metus auctor fringilla. Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Curabitur blandit tempus porttitor.
-                    </div>
-                </div>
-                <div className="row right">
-                    <div className="box sb-right">
-                        <div className="messageHeader">
-                            <small className="messageAuthor">Niklas Björk</small>
-                            <small className="timestamp">2022-10-12 19:15</small>
-                        </div>
-                        <p className="message">
-                            Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        </p>
-                    </div>
-                </div>
+                {thisRoomsMessages.map((message, index) => {
+                    return (
+                        <Message author={ message.author } side={ determineRowSide(index) } boubbleTag={ determineBoubbleTagSide(index) } timeStamp={ message.timestamp } text={ message.messageText }/>
+                    )
+                })}
+                <Footer imputField={true} defaultInputText='Nytt meddelande...' />
             </div>
         );
     }

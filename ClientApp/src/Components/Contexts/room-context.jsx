@@ -25,7 +25,7 @@ export const RoomContextProvider = (props) => {
 
   useEffect(() => {
     if(rooms) {
-      console.log('rooms:', rooms);
+      console.log('All rooms from context:', rooms);
     }
   }, [rooms]);
 

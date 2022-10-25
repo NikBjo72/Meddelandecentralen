@@ -1,0 +1,59 @@
+.right {
+    margin-right: .8rem !important;
+    margin-left: 3.8rem !important;
+    }
+
+.left {
+margin-right: 3.8rem !important;
+margin-left: .8rem !important;
+}
+
+.box {
+    margin: .8rem auto !important;
+    background: #ffffff;
+    padding: 1rem;
+    color: rgb(0, 0, 0);
+    position: relative;
+    border-radius: 5px;
+}
+.newMessage {
+    border: #2c7cc8 solid 4px;
+}
+
+.sb-right:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 10px solid transparent;
+    border-right: 10px solid #ffffff;
+    border-top: 10px solid #ffffff;;
+    border-bottom: 10px solid transparent;
+    right: 19px;
+    bottom: -19px;
+}
+
+.sb-left:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 10px solid #ffffff;;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #ffffff;;
+    border-bottom: 10px solid transparent;
+    left: 19px;
+    bottom: -19px;
+}
+
+.messageHeader {
+    margin-bottom: .6rem;
+}
+
+.messageAuthor {
+    font-weight: 900;
+    margin-right: 1rem;
+}
+.timestamp {
+    font-style: italic;
+}

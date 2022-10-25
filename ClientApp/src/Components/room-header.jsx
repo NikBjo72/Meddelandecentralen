@@ -8,7 +8,6 @@ export const RoomHeader = (props) => {
     const [roomStatus, setRoomStatus] = useState();
 
     const RoomStatus = () => {
-        console.log('Jag kör RoomStatus()!');
         switch (props.thisRoom.status) {
             case 'executed':
                 return (

@@ -12,7 +12,7 @@ export const GetRooms = async () => {
   }
 };
 
-// Gets all rooms
+// Get room by Id
 export const GetRoomsById = async (id) => {
   try {
     const response = await axios.get(
@@ -30,6 +30,18 @@ export const EditRoom = async (id, model) => {
     const response = await axios.patch(
       `/api/rooms/${id}`,
       model
+    );
+    return response.data;
+  } catch (e) {
+    console.log('error', e);
+  }
+};
+
+// Gets all messages
+export const GetMessages = async () => {
+  try {
+    const response = await axios.get(
+      '/api/messages',
     );
     return response.data;
   } catch (e) {
