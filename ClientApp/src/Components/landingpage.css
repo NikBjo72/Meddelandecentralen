@@ -1,0 +1,17 @@
+#chatBubbles {
+    width: 100%;
+    padding: 4rem 0rem 4rem 0rem;
+}
+
+.landingPageCol {
+    padding: 0rem 2rem 0rem 2rem;
+}
+
+#connectBtn {
+    float: right !important;
+    padding: .5rem 2rem .5rem 2rem;
+}
+
+#connectContainer {
+    margin-top: 4rem;
+}

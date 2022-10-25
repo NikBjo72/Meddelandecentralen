@@ -1,0 +1,75 @@
+#headerRow {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 1rem 1rem 1rem .5rem;
+}
+
+#userIcon {
+    width: 5rem;
+    height: auto;
+}
+
+#userName {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.white {
+    border-top: 1px solid rgb(255, 255, 255);
+    opacity: inherit;
+}
+
+.statusIcon {
+    width: 3rem;
+    height: auto;
+    padding: 5px;
+}
+
+.roomRaw {
+    padding: .7rem .7rem .7rem .5rem;
+    background-color: #7697B5;
+    margin-top: 1.3rem !important;
+    box-shadow: 4px 4px 4px rgb(50, 50, 50);
+    cursor: pointer;
+}
+
+.roomStatusIcon {
+    width: 4.5rem !important;
+    height: auto;
+    filter: drop-shadow(2px 2px 2px rgb(50, 50, 50));
+}
+
+.newMessages {
+    margin-top: -1.5rem !important;
+    float: right !important;
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    padding: .1rem !important;
+    background-color: red;
+    border-radius: 50%;
+    text-align: center;
+}
+
+#footerRow {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 1rem 1rem 1rem .5rem;
+}
+
+.footerIcons {
+    width: 4rem;
+    height: auto;
+    padding: 5px;
+    cursor: pointer;
+}
+
+#addMessageIcon {
+    width: 2rem;
+    height: auto;
+    margin-left: .7rem;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+#inputNewRoom {
+    margin-right: .6rem;
+    padding: .5rem;
+}

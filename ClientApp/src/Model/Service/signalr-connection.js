@@ -8,6 +8,6 @@ export const startConnection = async () => {
       console.log('SignalR connected.');
     } catch (err) {
       console.log(err);
-      setTimeout(start, 5000);
+      //setTimeout(startConnection, 5000);
     }
 }

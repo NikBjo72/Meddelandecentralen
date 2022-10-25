@@ -27,24 +27,28 @@ namespace Persistence.Contexts
                 {
                     RoomId = "101",
                     Name = "Konferensrum Kråkan",
+                    Status = "executed",
                     Timestamp = new DateTime()
                 },
                 new Room
                 {
                     RoomId = "102",
                     Name = "Köket",
+                    Status = "on-hold",
                     Timestamp = new DateTime()
                 },
                 new Room
                 {
                     RoomId = "103",
                     Name = "Rum 453",
+                    Status = "rejected",
                     Timestamp = new DateTime()
                 },
                 new Room
                 {
                     RoomId = "104",
                     Name = "Hotellobby",
+                    Status = "in-progress",
                     Timestamp = new DateTime()
                 }
             );

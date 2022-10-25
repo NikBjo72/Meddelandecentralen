@@ -2,9 +2,12 @@ import React, { useState, useEffect, useContext, createContext } from 'react';
 import { RoomContextProvider } from './Components/Contexts/room-context';
 import { MessageContextProvider } from './Components/Contexts/message-context';
 import { connection } from './Model/Service/signalr-connection';
+import useUser from './Components/Contexts/user-context';
+import Landingpage from './Components/landingpage';
+import Home from './Components/home';
 
 const App = () => {
-
+    const { loggedIn } = useUser();
     const newMessageHandler = () => {
         message = {
             roomId: "101",
@@ -32,7 +35,11 @@ const App = () => {
         <RoomContextProvider>
             <MessageContextProvider>
                 <>
-                    <h1>Hello World!</h1>
+                    {loggedIn ?
+                        <Home />
+                        :
+                        <Landingpage />
+                    }
                     <button onClick={newMessageHandler}>New Message</button>
                     <button onClick={newRoomHandler}>New Room</button>
                 </>
