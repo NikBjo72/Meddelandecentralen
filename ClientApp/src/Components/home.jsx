@@ -1,16 +1,11 @@
 import React, { useState, useEffect, useRef,  } from 'react';
 import './home.css';
 import imageUrl from '../Model/Service/images';
-import { GetRooms } from '../Model/Service/api-request';
+import RoomBtn from './room-btn';
+import useRoom from './Contexts/room-context';
 
 export const Home = (props) => {
-    const [rooms, setRooms] = useState([]);
-
-    useEffect(() => {
-    (async () => {
-            setRooms(await GetRooms());
-        })();
-    },[])
+    const { rooms } = useRoom();
 
     return (
         <div className="container-fluid">
@@ -23,7 +18,7 @@ export const Home = (props) => {
                 <hr className="rounded white" />
                 <div className="row">
                     <div className="col text-center">
-                        <img className="statusIcon" src={imageUrl.exedcuted} alt="Statusikon" />
+                        <img className="statusIcon" src={imageUrl.executed} alt="Statusikon" />
                         <div className="text-white small text-center">Klart</div>
                     </div>
                     <div className="col text-center">
@@ -41,25 +36,18 @@ export const Home = (props) => {
                 </div>
             </div>
         </div>
-        <div className="row roomRaw">
-            <img className="roomStatusIcon" src={imageUrl.exedcuted} alt="Statusikon" />
-            <div id="userName" className="text-white h5 col">Konferensrum Kråkan</div>
-        </div>
-        <div className="row roomRaw">
-            <img className="roomStatusIcon" src={imageUrl.onHold} alt="Statusikon" />
-            <div id="userName" className="text-white h5 col">Köket</div>
-            <small className="text-white newMessages">2</small>
-        </div>
-        <div className="row roomRaw">
-            <img className="roomStatusIcon" src={imageUrl.rejected} alt="Statusikon" />
-            <div id="userName" className="text-white h5 col">Rum 453</div>
-            <small className="text-white newMessages">1</small>
-        </div>
-        <div className="row roomRaw">
-            <img className="roomStatusIcon" src={imageUrl.inProgress} alt="Statusikon" />
-            <div id="userName" className="text-white h5 col">Hotellobby</div>
-            <small className="text-white newMessages">6</small>
-        </div>
+        {/* Mappar ut alla rummen som finns i API:et */}
+        {rooms?
+        rooms.map((room) => {
+            {console.log('room.status', room.status);}
+            return (
+                <RoomBtn key={room.roomId} status={room.status} name={room.name} newMessages={0} roomId={room.roomId}/>
+            )
+        })
+        :
+        null
+        }
+
         <div id="footerRow" className="row fixed-bottom">
             <div className="input-group mb-3">
                 <img id="addMessageIcon" src={imageUrl.plusCircle} alt="Lägg till meddelande" />

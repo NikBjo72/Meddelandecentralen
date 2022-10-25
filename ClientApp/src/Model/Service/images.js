@@ -1,6 +1,6 @@
 import * as chatBubbles from '../../../Media/chat-bubbles.svg';
 import * as accountCircle from '../../../Media/account_circle_white_24dp.svg';
-import * as exedcuted from '../../../Media/executed.png';
+import * as executed from '../../../Media/executed.png';
 import * as inProgress from '../../../Media/in-progress.png';
 import * as onHold from '../../../Media/on-hold.png';
 import * as rejected from '../../../Media/rejected.png';
@@ -8,11 +8,15 @@ import * as house from '../../../Media/house.svg';
 import * as chatSquareText from '../../../Media/chat-square-text.svg';
 import * as boxArrowRight from '../../../Media/box-arrow-right.svg';
 import * as plusCircle from '../../../Media/plus-circle.svg';
+import * as geoAltFill from '../../../Media/geo-alt-fill.svg';
+import * as sortDown from '../../../Media/sort-down-alt.svg';
+import * as sortUp from '../../../Media/sort-up-alt.svg';
+import * as search from '../../../Media/search.svg';
 
 const imageUrl = {
     chatBubbles,
     accountCircle,
-    exedcuted,
+    executed,
     inProgress,
     onHold,
     rejected,
@@ -20,5 +24,9 @@ const imageUrl = {
     chatSquareText,
     boxArrowRight,
     plusCircle,
+    geoAltFill,
+    sortDown,
+    sortUp,
+    search
 }
 export default imageUrl

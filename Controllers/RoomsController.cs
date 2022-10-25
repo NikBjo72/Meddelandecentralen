@@ -81,6 +81,7 @@ namespace Controllers
             {
                 var roomToEdit = _roomService.GetRoomById(roomId);
                 roomToEdit.Name = room.Name;
+                roomToEdit.Status = room.Status;
                 var newRoom = await _roomService.EditRoom(roomToEdit);
                 return Ok(newRoom);
             }

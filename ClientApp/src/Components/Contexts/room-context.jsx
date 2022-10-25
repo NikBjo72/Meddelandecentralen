@@ -1,30 +1,38 @@
 import React, { useState, useEffect, useContext, createContext } from 'react';
 import { connection, startConnection } from '../../Model/Service/signalr-connection';
+import { GetRooms } from '../../Model/Service/api-request';
 
 const RoomContext = createContext();
 
 export const RoomContextProvider = (props) => {
-  const [latestRoom, setLatestRoom] = useState()
+  const [rooms, setRooms] = useState();
 
   useEffect(() => {
+
+    (async () => {
+      setRooms(await GetRooms());
+    })();
+
     connection.on("RecieveRoom", (room) => {
-      setLatestRoom(room);
+      setRooms((rooms) => [...rooms, room]);
     });
-    if(connection.state != "Connected") {
+    if (connection.state != "Connected") {
       startConnection().catch((err) => {
         return console.error(err.toString());
       });
     }
-  },[]);
+  }, []);
 
   useEffect(() => {
-    console.log('latestRoom:', latestRoom);
-  }, [latestRoom]);
+    if(rooms) {
+      console.log('rooms:', rooms);
+    }
+  }, [rooms]);
 
   return (
     <RoomContext.Provider
       value={{
-        latestRoom: latestRoom
+        rooms: rooms
       }}
     >
       {props.children}

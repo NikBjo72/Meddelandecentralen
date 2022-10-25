@@ -11,3 +11,28 @@ export const GetRooms = async () => {
     console.log('error', e);
   }
 };
+
+// Gets all rooms
+export const GetRoomsById = async (id) => {
+  try {
+    const response = await axios.get(
+      `/api/rooms/${id}`,
+    );
+    return response.data;
+  } catch (e) {
+    console.log('error', e);
+  }
+};
+
+// Change room status
+export const EditRoom = async (id, model) => {
+  try {
+    const response = await axios.patch(
+      `/api/rooms/${id}`,
+      model
+    );
+    return response.data;
+  } catch (e) {
+    console.log('error', e);
+  }
+};

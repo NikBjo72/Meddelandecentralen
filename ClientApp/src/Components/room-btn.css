@@ -1,0 +1,19 @@
+.roomRaw {
+    padding: .7rem .7rem .7rem .5rem;
+    background-color: #7697B5;
+    margin-top: 1.3rem !important;
+    box-shadow: 4px 4px 4px rgb(50, 50, 50);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.roomStatusIcon {
+    width: 4.5rem !important;
+    height: auto;
+    filter: drop-shadow(2px 2px 2px rgb(50, 50, 50));
+}
+
+#roomName {
+    margin-top: auto;
+    margin-bottom: auto;
+}
