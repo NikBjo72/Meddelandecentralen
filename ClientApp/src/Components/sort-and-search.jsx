@@ -5,6 +5,7 @@ import imageUrl from '../Model/Service/images';
 export const SortAndSearch = (props) => {
     const [sort, setSort] = useState('newest');
     const [image, setImage] = useState(imageUrl.sortDown);
+    const [input, setInput] = useState('');
 
     const handleSort = (e) => {
         if (e.target.accessKey === 'newest') {
@@ -18,6 +19,14 @@ export const SortAndSearch = (props) => {
         }
     }
 
+    const inputOnChangeHandler = (event) => {
+        setInput(event.target.value);
+    }
+
+    useEffect(() => {
+        props.searchOnChange(input)
+    })
+
     return (
         <>
             <div id="filterAndSearchRow" className="row sticky-top">
@@ -28,7 +37,7 @@ export const SortAndSearch = (props) => {
                             <img id="searchIcon" src={imageUrl.search} alt="Hem" />
                         </span>
                     </div>
-                    <input id="searchInput" type="text" className="form-control" placeholder="Sök..." aria-label="Username" aria-describedby="basic-addon1" />
+                    <input id="searchInput" onChange={ inputOnChangeHandler } type="text" className="form-control" placeholder="Sök..." aria-label="Username" aria-describedby="basic-addon1" />
                 </div>
             </div>
             <hr className="rounded black" />

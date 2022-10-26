@@ -27,7 +27,7 @@ export const Footer = (props) => {
             {props.imputField ?
                 <div className="input-group mb-3">
                     <img onClick={ sendMessageOnClick } id="addMessageIcon" src={imageUrl.plusCircle} alt="Lägg till meddelande" />
-                    <input id="inputNewRoom" value={input} onChange={inputOnChangeHandler} type="text" className="form-control" placeholder={props.defaultInputText} aria-label="Username" aria-describedby="basic-addon1" />
+                    <input id="inputNewRoom" value={input} onChange={ inputOnChangeHandler } type="text" className="form-control" placeholder={props.defaultInputText} aria-label="Username" aria-describedby="basic-addon1" />
                 </div>
                 :
                 null

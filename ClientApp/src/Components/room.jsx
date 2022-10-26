@@ -19,9 +19,10 @@ export const Room = (props) => {
     const [roomId, setRoomId] = useState(location.pathname.split('/')[2]);
     const [thisRoom, setThisRoom] = useState();
     const [thisRoomsMessages, setThisRoomsMessages] = useState([]);
+    const [searchText, setSearchText] = useState('');
 
     useEffect(() => {
-        console.log('Kor use effect!');
+        console.log('Kör use effect!');
         if(rooms) {
             setThisRoom(rooms.find(r => r.roomId === roomId));
         }
@@ -74,11 +75,38 @@ export const Room = (props) => {
         console.log('thisRoomsMessages:', thisRoomsMessages);
     }, [thisRoomsMessages])
 
+    useEffect(() => {
+        console.log('searchText:', searchText);
+    }, [searchText])
+
+    const searchOnChange = (search) => {
+        console.log('search:', search);
+        setSearchText(search);
+    }
+
+    useEffect(() => {
+        console.log('Kör search use effect');
+        var seachedMessages = [];
+        if (searchText.trim().length !== 0) {
+            thisRoomsMessages.forEach((message) => {
+                if(message.messageText.split(' ').some(w => w === searchText)) {
+                    console.log('Kör filter!!!');
+                    seachedMessages.push(thisRoomsMessages.filter(m => m.messageId === message.messageId)[0]);
+                    setThisRoomsMessages(seachedMessages);
+                }
+            })
+        } else {
+            if(messages) {
+                setThisRoomsMessages(messages.filter(m => m.roomId === roomId));
+            }
+        }
+    },[searchText])
+
     if (thisRoom) {
         return (
             <div className="container-fluid">
                 <RoomHeader thisRoom={thisRoom} />
-                <SortAndSearch handleSortOnClick={ handleSortOnClick }/>
+                <SortAndSearch handleSortOnClick={ handleSortOnClick } searchOnChange={ searchOnChange }/>
                 {thisRoomsMessages.map((message, index) => {
                     return (
                         <Message key={message.messageId} author={ message.author } side={ determineRowSide(index) } boubbleTag={ determineBoubbleTagSide(index) } timeStamp={ message.timestamp } text={ message.messageText }/>
