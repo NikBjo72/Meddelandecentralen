@@ -1,8 +1,4 @@
 
-#filterAndSearchRow {
-    top: 7.3rem;
-}
-
 .black {
     border-top: 1px solid rgb(0, 0, 0);
     opacity: inherit;
@@ -16,38 +12,4 @@
 #roomName {
     margin-top: auto;
     margin-bottom: auto;
-}
-
-#sortIcon {
-    width: 2.8rem;
-    height: auto;
-    margin-right: 1.2rem;
-    margin-left: .8rem;
-    filter: drop-shadow(2px 2px 2px rgb(50, 50, 50));
-    cursor: pointer;
-}
-
-#filterAndSearchRow {
-    margin-top: 1rem;
-}
-
-#searchIcon {
-    width: 2rem;
-    height: auto;
-    cursor: pointer;
-}
-
-#searchInputGroup {
-    background-color: white !important;
-}
-
-#searchInput {
-    margin-right: 1rem;
-}
-
-.dropdown-toggle::after {
-    display: none !important; 
-}
-#filterAndSearchRow {
-    z-index: 100;
 }

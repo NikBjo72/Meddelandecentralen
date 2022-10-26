@@ -9,6 +9,7 @@ import RoomHeader from './room-header';
 import Footer from './footer';
 import Message from './message';
 import { connection } from '../Model/Service/signalr-connection';
+import SortAndSearch from './sort-and-search';
 
 export const Room = (props) => {
     const { rooms } = useRoom();
@@ -20,6 +21,7 @@ export const Room = (props) => {
     const [thisRoomsMessages, setThisRoomsMessages] = useState([]);
 
     useEffect(() => {
+        console.log('Kor use effect!');
         if(rooms) {
             setThisRoom(rooms.find(r => r.roomId === roomId));
         }
@@ -59,10 +61,24 @@ export const Room = (props) => {
         });
     }
 
+    const handleSortOnClick = (sort) => {
+        if(sort === 'newest') {
+            setThisRoomsMessages((thisRoomsMessages) => [...thisRoomsMessages.sort((a,b) => b.timestamp > a.timestamp)]);
+            
+        } else {
+            setThisRoomsMessages((thisRoomsMessages) => [...thisRoomsMessages.sort((a,b) => a.timestamp > b.timestamp)]);            
+        }
+    }
+
+    useEffect(() => {
+        console.log('thisRoomsMessages:', thisRoomsMessages);
+    }, [thisRoomsMessages])
+
     if (thisRoom) {
         return (
             <div className="container-fluid">
                 <RoomHeader thisRoom={thisRoom} />
+                <SortAndSearch handleSortOnClick={ handleSortOnClick }/>
                 {thisRoomsMessages.map((message, index) => {
                     return (
                         <Message key={message.messageId} author={ message.author } side={ determineRowSide(index) } boubbleTag={ determineBoubbleTagSide(index) } timeStamp={ message.timestamp } text={ message.messageText }/>

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef, } from 'react';
 import './room-header.css';
 import imageUrl from '../Model/Service/images';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { EditRoom } from '../Model/Service/api-request';
 import { connection } from '../Model/Service/signalr-connection';
 
 export const RoomHeader = (props) => {
@@ -95,18 +94,6 @@ export const RoomHeader = (props) => {
                     </div>
                 </div>
             </div>
-            <div id="filterAndSearchRow" className="row sticky-top">
-                <div className="input-group">
-                    <img id="sortIcon" src={imageUrl.sortDown} alt="Hem" />
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="searchInputGroup">
-                            <img id="searchIcon" src={imageUrl.search} alt="Hem" />
-                        </span>
-                    </div>
-                    <input id="searchInput" type="text" className="form-control" placeholder="Sök..." aria-label="Username" aria-describedby="basic-addon1" />
-                </div>
-            </div>
-            <hr className="rounded black" />
         </>
     );
 }

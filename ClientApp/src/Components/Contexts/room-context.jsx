@@ -16,7 +16,6 @@ export const RoomContextProvider = (props) => {
     connection.on("RecieveRoom", (room) => {
       setNewRoom(room);
     });
-
   }, []);
 
   useEffect(() => {
@@ -35,7 +34,6 @@ export const RoomContextProvider = (props) => {
         }
       }
   }, [newRoom]);
-
 
   useEffect(() => {
     if (rooms) {
