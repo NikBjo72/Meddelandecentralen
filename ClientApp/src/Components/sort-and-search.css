@@ -1,8 +1,4 @@
 
-#filterAndSearchRow {
-    top: 7.3rem;
-}
-
 #sortIcon {
     width: 2.8rem;
     height: auto;
@@ -13,7 +9,9 @@
 }
 
 #filterAndSearchRow {
-    margin-top: 1rem !important;
+    margin-top: 1rem;
+    z-index: 100;
+    top: 8rem;
 }
 
 #searchIcon {
@@ -31,7 +29,4 @@
 
 .dropdown-toggle::after {
     display: none !important; 
-}
-#filterAndSearchRow {
-    z-index: 100;
 }

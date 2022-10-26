@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, } from 'react';
 import './sort-and-search.css';
 import imageUrl from '../Model/Service/images';
+import { useStorageState } from 'react-storage-hooks';
 
 export const SortAndSearch = (props) => {
     const [sort, setSort] = useState('newest');

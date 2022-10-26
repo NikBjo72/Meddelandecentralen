@@ -63,6 +63,7 @@ export const Room = (props) => {
     }
 
     const handleSortOnClick = (sort) => {
+        console.log('sort', sort);
         if(sort === 'newest') {
             setThisRoomsMessages((thisRoomsMessages) => [...thisRoomsMessages.sort((a,b) => b.timestamp > a.timestamp)]);
             
