@@ -6,6 +6,7 @@ import useRoom from './Contexts/room-context';
 import useUser from './Contexts/user-context';
 import Footer from './footer';
 import { connection } from '../Model/Service/signalr-connection';
+import { nanoid } from 'nanoid';
 
 export const Home = (props) => {
     const { rooms } = useRoom();
@@ -13,6 +14,7 @@ export const Home = (props) => {
 
     const handleNewRoom = (text) => {
         var newRoom = {
+            roomId: nanoid(),
             Status: "in-progress",
             Name: text,
             Timestamp: new Date(),

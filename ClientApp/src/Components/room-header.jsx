@@ -3,6 +3,7 @@ import './room-header.css';
 import imageUrl from '../Model/Service/images';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { EditRoom } from '../Model/Service/api-request';
+import { connection } from '../Model/Service/signalr-connection';
 
 export const RoomHeader = (props) => {
     const [roomStatus, setRoomStatus] = useState();
@@ -44,12 +45,19 @@ export const RoomHeader = (props) => {
         RoomStatus();
     },[roomStatus])
 
+    useEffect(() => {
+        console.log('props.thisRoom.status:', props.thisRoom.status);
+    })
+
     const handleStatus = (event) => {
-        setRoomStatus(event.target.id);
         props.thisRoom.status = event.target.id;
-        (async () => {
-            EditRoom(props.thisRoom.roomId, props.thisRoom);
-        })()
+        // (async () => {
+        //     EditRoom(props.thisRoom.roomId, props.thisRoom);
+        // })()
+        connection.invoke("NotifyNewRoom", props.thisRoom).catch(function (err) {
+            return console.error(err.toString());
+        });
+        setRoomStatus(props.thisRoom.status);
     }
 
     return (

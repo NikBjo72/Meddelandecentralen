@@ -1,11 +1,21 @@
 import React, { useState, useEffect, useContext, createContext } from 'react';
+import { useStorageState } from 'react-storage-hooks';
+import { connection, startConnection } from '../../Model/Service/signalr-connection';
 
 const UserContext = createContext();
 
 export const UserContextProvider = (props) => {
-  const [username, setUsername] = useState();
-  const [connectionId, setConnectionId] = useState();
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [username, setUsername] = useStorageState(localStorage, 'username', [])
+  const [connectionId, setConnectionId] = useStorageState(localStorage, 'connectionId', [])
+  const [loggedIn, setLoggedIn] = useStorageState(localStorage, 'loggedIn', [])
+
+  useEffect(() => {
+    if (loggedIn) {
+      startConnection().catch((err) => {
+        return console.error(err.toString());
+      });
+    }
+  },[loggedIn])
 
   useEffect(() => {
     console.log('username:', username);

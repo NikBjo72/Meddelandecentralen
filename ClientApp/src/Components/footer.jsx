@@ -17,6 +17,11 @@ export const Footer = (props) => {
         setInput('');
     }
 
+    const handleLogOut = () => {
+        setLoggedIn(false);
+        window.localStorage.clear();
+    }
+
     return (
         <div id="footerRow" className="row fixed-bottom">
             {props.imputField ?
@@ -35,7 +40,7 @@ export const Footer = (props) => {
                     <Link to={`/all-messages`} className="col text-center">
                         <img className="footerIcons" src={imageUrl.chatSquareText} alt="Alla meddelanden" />
                     </Link>
-                    <div onClick={() => { setLoggedIn(false) }} className="col text-center">
+                    <div onClick={() => { handleLogOut() }} className="col text-center">
                         <img className="footerIcons" src={imageUrl.boxArrowRight} alt="Avsluta" />
                     </div>
                 </div>
