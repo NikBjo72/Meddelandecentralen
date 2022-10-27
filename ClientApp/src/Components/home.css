@@ -32,14 +32,3 @@
     height: auto;
     filter: drop-shadow(2px 2px 2px rgb(50, 50, 50));
 }
-
-.newMessages {
-    margin-top: -1.5rem !important;
-    float: right !important;
-    width: 1.5rem !important;
-    height: 1.5rem !important;
-    padding: .1rem !important;
-    background-color: red;
-    border-radius: 50%;
-    text-align: center;
-}

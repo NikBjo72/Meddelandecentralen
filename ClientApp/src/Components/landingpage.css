@@ -1,10 +1,18 @@
+#landingpageContainer {
+    padding: 2rem;
+}
+
 #chatBubbles {
     width: 100%;
     padding: 4rem 0rem 4rem 0rem;
+    max-width: 40rem;
 }
 
 .landingPageCol {
     padding: 0rem 2rem 0rem 2rem;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    text-align: center;
 }
 
 #connectBtn {
@@ -14,4 +22,6 @@
 
 #connectContainer {
     margin-top: 4rem;
+    max-width: 40rem;
+    text-align: left;
 }

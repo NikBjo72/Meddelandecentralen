@@ -17,13 +17,13 @@ export const Landingpage = (props) => {
     }
 
     return (
-        <div className="container-fluid">
-        <div className="row">
-            <div className="col-sm-6 landingPageCol">
+        <div id="landingpageContainer" className="container-fluid">
+        <div className="row flex-column">
+            <div className="col-sm landingPageCol">
                 <img id="chatBubbles" src={imageUrl.chatBubbles} alt="Chat icons" />
             </div>
-            <div id="connectContainer" className="col-sm-6 landingPageCol">
-                <label className="text-white mx-2 h5" htmlFor="inputName">Namn</label>
+            <div id="connectContainer" className="col-sm landingPageCol">
+                <label id="label" className="text-white mx-2 h5" htmlFor="inputName">Namn</label>
                 <div className="input-group input-group-lg mb-3">
                     <input id="inputName" onChange={ (event) => {inputOnChangeHandler(event)} } type="text" className="form-control" placeholder="Namn" value={input} aria-label="Username" />
                 </div>

@@ -3,6 +3,7 @@ import './home.css';
 import imageUrl from '../Model/Service/images';
 import RoomBtn from './room-btn';
 import useRoom from './Contexts/room-context';
+import useMessage from './Contexts/message-context';
 import useUser from './Contexts/user-context';
 import Footer from './footer';
 import { connection } from '../Model/Service/signalr-connection';
@@ -11,6 +12,7 @@ import { nanoid } from 'nanoid';
 export const Home = (props) => {
     const { rooms } = useRoom();
     const { username, setUserId } = useUser();
+    const { messages, newMessagesId } = useMessage();
 
     const handleNewRoom = (text) => {
         var newRoom = {
@@ -24,12 +26,18 @@ export const Home = (props) => {
         });
     }
 
-    // useEffect(() => {
-    //     connection.invoke('getConnectionId')
-    //             .then(function (connectionId) {
-    //                 console.log(connectionId)
-    //             }).catch(err => console.error(err.toString()));;
-    // },[])
+    const CheckNewMessages = (roomId) => {
+        var referenseMessages = messages.filter(m => m.roomId === roomId);
+        let counter = 0;
+        referenseMessages.forEach((message) => {
+            for(id of newMessagesId) {
+                if (id === message.messageId) {
+                    counter++;
+                }
+            }
+        })
+        return counter;
+    }
 
     return (
         <div className="container-fluid">
@@ -64,7 +72,7 @@ export const Home = (props) => {
             {rooms?
                 rooms.map((room) => {
                     return (
-                        <RoomBtn key={room.roomId} status={room.status} name={room.name} newMessages={0} roomId={room.roomId} />
+                        <RoomBtn key={room.roomId} status={room.status} name={room.name} newMessages={ CheckNewMessages(room.roomId) } roomId={room.roomId} />
                     )
                 })
                 :

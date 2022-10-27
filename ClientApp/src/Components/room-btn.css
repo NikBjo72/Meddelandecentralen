@@ -39,3 +39,14 @@
     margin-top: auto;
     margin-bottom: auto;
 }
+
+.newMessages {
+    margin-top: -.5rem !important;
+    float: right !important;
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    padding: .1rem !important;
+    background-color: red;
+    border-radius: 50%;
+    text-align: center;
+}
