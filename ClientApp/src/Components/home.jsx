@@ -27,16 +27,18 @@ export const Home = (props) => {
     }
 
     const CheckNewMessages = (roomId) => {
-        var referenseMessages = messages.filter(m => m.roomId === roomId);
-        let counter = 0;
-        referenseMessages.forEach((message) => {
-            for(id of newMessagesId) {
-                if (id === message.messageId) {
-                    counter++;
+        if (messages) {
+            var referenseMessages = messages.filter(m => m.roomId === roomId);
+            let counter = 0;
+            referenseMessages.forEach((message) => {
+                for (id of newMessagesId) {
+                    if (id === message.messageId) {
+                        counter++;
+                    }
                 }
-            }
-        })
-        return counter;
+            })
+            return counter;
+        }
     }
 
     return (
@@ -45,7 +47,7 @@ export const Home = (props) => {
                 <div className="col-sm-12">
                     <div className="row">
                         <img id="userIcon" src={imageUrl.accountCircle} alt="Användarikon" />
-                        <div id="userName" className="text-white h2 col">{ username }</div>
+                        <div id="userName" className="text-white h2 col">{username}</div>
                     </div>
                     <hr className="rounded white" />
                     <div className="row">
@@ -69,16 +71,16 @@ export const Home = (props) => {
                 </div>
             </div>
             {/* Mappar ut alla rummen som finns i API:et */}
-            {rooms?
+            {rooms ?
                 rooms.map((room) => {
                     return (
-                        <RoomBtn key={room.roomId} status={room.status} name={room.name} newMessages={ CheckNewMessages(room.roomId) } roomId={room.roomId} />
+                        <RoomBtn key={room.roomId} status={room.status} name={room.name} newMessages={CheckNewMessages(room.roomId)} roomId={room.roomId} />
                     )
                 })
                 :
                 null
             }
-            <Footer defaultInputText='Nytt rum...' onClick={ handleNewRoom }/>
+            <Footer defaultInputText='Nytt rum...' onClick={handleNewRoom} />
         </div>
     );
 }

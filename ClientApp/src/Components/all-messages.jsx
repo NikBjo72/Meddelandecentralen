@@ -46,7 +46,6 @@ export const AllMessages = (props) => {
     }
 
     const searchOnChange = (search) => {
-        console.log('search:', search);
         setSearchText(search);
     }
 
@@ -77,7 +76,7 @@ export const AllMessages = (props) => {
                         </div>
                     </div>
                 </div>
-                <SortAndSearch handleSortOnClick={handleSortOnClick} searchOnChange={searchOnChange} />
+                <SortAndSearch handleSortOnClick={handleSortOnClick} searchOnChange={ searchOnChange } />
                 {thisRoomsMessages.map((message, index) => {
                     return (
                         <Message key={message.messageId} author={message.author} side={determineRowSide(index)} boubbleTag={determineBoubbleTagSide(index)} timeStamp={message.timestamp} text={message.messageText} />

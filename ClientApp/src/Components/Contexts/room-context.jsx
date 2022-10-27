@@ -30,7 +30,6 @@ export const RoomContextProvider = (props) => {
       });
       var newRooms = [...rooms];
       newRooms.splice(indexOfRoom, 1);
-      console.log('newRooms:', newRooms);
       setRooms(newRooms);
       setDeleteRoomId();
     }
@@ -54,11 +53,12 @@ export const RoomContextProvider = (props) => {
       }
   }, [newRoom]);
 
-  useEffect(() => {
-    if (rooms) {
-      console.log('All rooms from context:', rooms);
-    }
-  }, [rooms]);
+  // For development
+  // useEffect(() => {
+  //   if (rooms) {
+  //     console.log('All rooms from context:', rooms);
+  //   }
+  // }, [rooms]);
 
   return (
     <RoomContext.Provider

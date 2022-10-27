@@ -13,7 +13,7 @@ import SortAndSearch from './sort-and-search';
 
 export const Room = (props) => {
     const { rooms } = useRoom();
-    const { messages, newMessagesId, setNewMessagesId } = useMessage();
+    const { messages, newMessagesId, setNewMessagesId, updateMessageContext } = useMessage();
     const { username } = useUser();
     const location = useLocation();
     const [roomId, setRoomId] = useState(location.pathname.split('/')[2]);
@@ -23,23 +23,19 @@ export const Room = (props) => {
 
     useEffect(() => {
         return () => {
-            var referense = messages.filter(m => m.roomId === roomId)
-            var editedNewMessagesId = [...newMessagesId];
-            console.log('referense:', referense);
-            referense.forEach((message) => {
-                console.log('message', message);
-                const idx = editedNewMessagesId.findIndex(id => {
-                    console.log('id:', id);
-                    console.log('message.messageId:', message.messageId);
-                    return id === message.messageId;
-                });
-                console.log('idx', idx);
-                if(idx > -1) {
-                    editedNewMessagesId.splice(idx, 1);
-                }
-            })
-            console.log('editedNewMessagesId', editedNewMessagesId);
-            setNewMessagesId(editedNewMessagesId);
+            if (messages) {
+                var referense = messages.filter(m => m.roomId === roomId)
+                referense.forEach((message) => {
+                    const idx = newMessagesId.findIndex(id => {
+                        return id === message.messageId;
+                    });
+                    if(idx > -1) {
+                        newMessagesId.splice(idx, 1);
+                    }
+                })
+                setNewMessagesId(newMessagesId);
+                updateMessageContext();
+            }
         }
     }, [])
 
@@ -78,12 +74,20 @@ export const Room = (props) => {
         }
     }
 
+    const getLocalDateAndTime = () => {
+        var tzoffset = (new Date()).getTimezoneOffset() * 60000;
+        var localISOTime = (new Date(Date.now() - tzoffset)).toISOString().slice(0, -1);
+        var TimeArray = localISOTime.split('T');
+        var Time = TimeArray[1].split('.');
+        return `${TimeArray[0]} ${Time[0]}`
+    }
+
     const handleNewMessage = (text) => {
         var newMessage = {
             messageId: nanoid(),
             roomId: roomId,
             messageText: text,
-            timestamp: new Date(),
+            timestamp: getLocalDateAndTime(),
             author: username
         }
         connection.invoke("NotifyNewMessage", newMessage).catch(function (err) {
@@ -92,10 +96,8 @@ export const Room = (props) => {
     }
 
     const handleSortOnClick = (sort) => {
-        console.log('sort', sort);
         if (sort === 'newest') {
             setThisRoomsMessages((thisRoomsMessages) => [...thisRoomsMessages.sort((a, b) => b.timestamp > a.timestamp)]);
-
         } else {
             setThisRoomsMessages((thisRoomsMessages) => [...thisRoomsMessages.sort((a, b) => a.timestamp > b.timestamp)]);
         }
@@ -110,7 +112,6 @@ export const Room = (props) => {
         if (searchText.trim().length !== 0) {
             thisRoomsMessages.forEach((message) => {
                 if (message.messageText.split(' ').some(w => w === searchText)) {
-                    console.log('Kör filter!!!');
                     seachedMessages.push(thisRoomsMessages.filter(m => m.messageId === message.messageId)[0]);
                     setThisRoomsMessages(seachedMessages);
                 }

@@ -20,11 +20,12 @@ export const UserContextProvider = (props) => {
     }
   }, [loggedIn])
 
-  useEffect(() => {
-    console.log('username:', username);
-    console.log('userId:', userId);
-    console.log('loggedIn:', loggedIn);
-  });
+  // For development
+  // useEffect(() => {
+  //   console.log('username:', username);
+  //   console.log('userId:', userId);
+  //   console.log('loggedIn:', loggedIn);
+  // });
 
   return (
     <UserContext.Provider

@@ -11,7 +11,7 @@ namespace Domain.Interfaces
         public string MessageId { get; set; }
         public string RoomId { get; set; }
         public string MessageText { get; set; }
-        public DateTime Timestamp { get; set; }
+        public string Timestamp { get; set; }
         public string Author { get; set; }
     }
 }
