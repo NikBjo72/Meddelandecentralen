@@ -19,14 +19,21 @@ namespace Hubs
             _roomService = roomService;
             _messageService = messageService;
         }
-        
+
+        public string GetConnectionId()
+        {
+            return Context.ConnectionId;
+        }
+
         public async Task NotifyNewMessage(Message message)
         {
             await Clients.All.SendAsync("RecieveMessage", message);
-            if(_messageService.GetAllMessages().Any(m => m.MessageId == message.MessageId)) {
+            if (_messageService.GetAllMessages().Any(m => m.MessageId == message.MessageId))
+            {
                 await _messageService.EditMessage(message);
             }
-            else {
+            else
+            {
                 await _messageService.CreateMessage(message);
             }
         }
@@ -35,10 +42,12 @@ namespace Hubs
         {
             await Clients.All.SendAsync("RecieveRoom", room);
 
-            if(_roomService.GetAllRooms().Any(m => m.RoomId == room.RoomId)) {
+            if (_roomService.GetAllRooms().Any(m => m.RoomId == room.RoomId))
+            {
                 await _roomService.EditRoom(room);
             }
-            else {
+            else
+            {
                 await _roomService.CreateRoom(room);
             }
         }
@@ -46,7 +55,7 @@ namespace Hubs
         public async Task NotifyDeleteRoom(string roomId)
         {
             await _roomService.DeleteRoom(roomId);
-            await Clients.All.SendAsync("DeleteRoom", roomId);   
+            await Clients.All.SendAsync("DeleteRoom", roomId);
         }
     }
 }

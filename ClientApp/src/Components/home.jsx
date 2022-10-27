@@ -10,7 +10,7 @@ import { nanoid } from 'nanoid';
 
 export const Home = (props) => {
     const { rooms } = useRoom();
-    const { username } = useUser();
+    const { username, setUserId } = useUser();
 
     const handleNewRoom = (text) => {
         var newRoom = {
@@ -23,6 +23,13 @@ export const Home = (props) => {
             return console.error(err.toString());
         });
     }
+
+    // useEffect(() => {
+    //     connection.invoke('getConnectionId')
+    //             .then(function (connectionId) {
+    //                 console.log(connectionId)
+    //             }).catch(err => console.error(err.toString()));;
+    // },[])
 
     return (
         <div className="container-fluid">

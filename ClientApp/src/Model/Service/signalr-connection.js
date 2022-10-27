@@ -6,8 +6,18 @@ export const startConnection = async () => {
     try {
       await connection.start();
       console.log('SignalR connected.');
+      return connection.connection.connectionId;
     } catch (err) {
       console.log(err);
       //setTimeout(startConnection, 5000);
     }
+}
+
+export const stopConnection = async () => {
+  try {
+    await connection.stop();
+    console.log('SignalR stopped.');
+  } catch (err) {
+    console.log(err);
+  }
 }
