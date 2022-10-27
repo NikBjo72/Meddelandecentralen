@@ -3,10 +3,14 @@ import './footer.css';
 import imageUrl from '../Model/Service/images';
 import { Link } from "react-router-dom";
 import useUser from './Contexts/user-context';
+import useRoom from './Contexts/room-context';
+import useMessage from './Contexts/message-context';
 
 export const Footer = (props) => {
     const { setLoggedIn } = useUser();
     const [input, setInput] = useState('');
+    const { setRooms } = useRoom();
+    const { setMessages, setNewMessagesId } = useMessage();
 
     const inputOnChangeHandler = (event) => {
         setInput(event.target.value);
@@ -20,6 +24,9 @@ export const Footer = (props) => {
     const handleLogOut = () => {
         setLoggedIn(false);
         window.localStorage.clear();
+        setRooms();
+        setMessages();
+        setNewMessagesId([]);
     }
 
     return (

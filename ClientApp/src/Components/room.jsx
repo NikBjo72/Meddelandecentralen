@@ -13,7 +13,7 @@ import SortAndSearch from './sort-and-search';
 
 export const Room = (props) => {
     const { rooms } = useRoom();
-    const { messages } = useMessage();
+    const { messages, newMessagesId, setNewMessagesId } = useMessage();
     const { username } = useUser();
     const location = useLocation();
     const [roomId, setRoomId] = useState(location.pathname.split('/')[2]);
@@ -22,31 +22,60 @@ export const Room = (props) => {
     const [searchText, setSearchText] = useState('');
 
     useEffect(() => {
-        console.log('Kör use effect!');
-        if(rooms) {
+        return () => {
+            var referense = messages.filter(m => m.roomId === roomId)
+            var editedNewMessagesId = [...newMessagesId];
+            console.log('referense:', referense);
+            referense.forEach((message) => {
+                console.log('message', message);
+                const idx = editedNewMessagesId.findIndex(id => {
+                    console.log('id:', id);
+                    console.log('message.messageId:', message.messageId);
+                    return id === message.messageId;
+                });
+                console.log('idx', idx);
+                if(idx > -1) {
+                    editedNewMessagesId.splice(idx, 1);
+                }
+            })
+            console.log('editedNewMessagesId', editedNewMessagesId);
+            setNewMessagesId(editedNewMessagesId);
+        }
+    }, [])
+
+    useEffect(() => {
+        if (rooms) {
             setThisRoom(rooms.find(r => r.roomId === roomId));
         }
-        if(messages) {
+        if (messages) {
             setThisRoomsMessages(messages.filter(m => m.roomId === roomId));
         }
-    },[rooms, messages])
+    }, [rooms, messages])
 
     const determineRowSide = (index) => {
-        if(index % 2==0){
+        if (index % 2 == 0) {
             return 'left';
-         }
-         else {
+        }
+        else {
             return 'right'
-         } 
+        }
     }
 
     const determineBoubbleTagSide = (index) => {
-        if(index % 2==0){
+        if (index % 2 == 0) {
             return 'sb-left';
-         }
-         else {
+        }
+        else {
             return 'sb-right'
-         } 
+        }
+    }
+
+    const determineNewMessage = (messageId) => {
+        if (newMessagesId.some(id => id === messageId)) {
+            return 'newMessage';
+        } else {
+            return '';
+        }
     }
 
     const handleNewMessage = (text) => {
@@ -64,56 +93,46 @@ export const Room = (props) => {
 
     const handleSortOnClick = (sort) => {
         console.log('sort', sort);
-        if(sort === 'newest') {
-            setThisRoomsMessages((thisRoomsMessages) => [...thisRoomsMessages.sort((a,b) => b.timestamp > a.timestamp)]);
-            
+        if (sort === 'newest') {
+            setThisRoomsMessages((thisRoomsMessages) => [...thisRoomsMessages.sort((a, b) => b.timestamp > a.timestamp)]);
+
         } else {
-            setThisRoomsMessages((thisRoomsMessages) => [...thisRoomsMessages.sort((a,b) => a.timestamp > b.timestamp)]);            
+            setThisRoomsMessages((thisRoomsMessages) => [...thisRoomsMessages.sort((a, b) => a.timestamp > b.timestamp)]);
         }
     }
 
-    useEffect(() => {
-        console.log('thisRoomsMessages:', thisRoomsMessages);
-    }, [thisRoomsMessages])
-
-    useEffect(() => {
-        console.log('searchText:', searchText);
-    }, [searchText])
-
     const searchOnChange = (search) => {
-        console.log('search:', search);
         setSearchText(search);
     }
 
     useEffect(() => {
-        console.log('Kör search use effect');
         var seachedMessages = [];
         if (searchText.trim().length !== 0) {
             thisRoomsMessages.forEach((message) => {
-                if(message.messageText.split(' ').some(w => w === searchText)) {
+                if (message.messageText.split(' ').some(w => w === searchText)) {
                     console.log('Kör filter!!!');
                     seachedMessages.push(thisRoomsMessages.filter(m => m.messageId === message.messageId)[0]);
                     setThisRoomsMessages(seachedMessages);
                 }
             })
         } else {
-            if(messages) {
+            if (messages) {
                 setThisRoomsMessages(messages.filter(m => m.roomId === roomId));
             }
         }
-    },[searchText])
+    }, [searchText])
 
     if (thisRoom) {
         return (
             <div className="container-fluid">
                 <RoomHeader thisRoom={thisRoom} />
-                <SortAndSearch handleSortOnClick={ handleSortOnClick } searchOnChange={ searchOnChange }/>
+                <SortAndSearch handleSortOnClick={handleSortOnClick} searchOnChange={searchOnChange} />
                 {thisRoomsMessages.map((message, index) => {
                     return (
-                        <Message key={message.messageId} author={ message.author } side={ determineRowSide(index) } boubbleTag={ determineBoubbleTagSide(index) } timeStamp={ message.timestamp } text={ message.messageText }/>
+                        <Message key={message.messageId} newMessage={determineNewMessage(message.messageId)} author={message.author} side={determineRowSide(index)} boubbleTag={determineBoubbleTagSide(index)} timeStamp={message.timestamp} text={message.messageText} />
                     )
                 })}
-                <Footer imputField={true} defaultInputText='Nytt meddelande...' onClick={ handleNewMessage }/>
+                <Footer imputField={true} defaultInputText='Nytt meddelande...' onClick={handleNewMessage} />
             </div>
         );
     }

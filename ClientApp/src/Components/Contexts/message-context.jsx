@@ -6,12 +6,18 @@ const MessageContext = createContext();
 
 export const MessageContextProvider = (props) => {
   const [messages, setMessages] = useState()
+  const [newMessagesId, setNewMessagesId] = useState([])
 
   useEffect(() => {
 
     (async () => {
       setMessages(await GetMessages());
     })();
+
+    connection.on("NotifyNewMessage", (message) => {
+      console.log('NotifyNewMessage:', message);
+      setNewMessagesId((newMessagesId) => [...newMessagesId, message.messageId]);
+    });
 
     connection.on("RecieveMessage", (message) => {
       setMessages((messages) => [...messages, message]);
@@ -21,12 +27,16 @@ export const MessageContextProvider = (props) => {
 
   useEffect(() => {
     console.log('All messages from context:', messages);
-  }, [messages]);
+    console.log('New messages Id:', newMessagesId);
+  }, [messages, newMessagesId]);
 
   return (
     <MessageContext.Provider
       value={{
-        messages: messages
+        messages: messages,
+        setMessages: setMessages,
+        newMessagesId: newMessagesId,
+        setNewMessagesId: setNewMessagesId
       }}
     >
       {props.children}

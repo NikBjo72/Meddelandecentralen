@@ -63,7 +63,8 @@ export const RoomContextProvider = (props) => {
   return (
     <RoomContext.Provider
       value={{
-        rooms: rooms
+        rooms: rooms,
+        setRooms: setRooms
       }}
     >
       {props.children}

@@ -27,7 +27,10 @@ namespace Hubs
 
         public async Task NotifyNewMessage(Message message)
         {
-            await Clients.All.SendAsync("RecieveMessage", message);
+            var groupName = "newMessages";
+            await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
+            await Clients.OthersInGroup(groupName).SendAsync("NotifyNewMessage", message);
+
             if (_messageService.GetAllMessages().Any(m => m.MessageId == message.MessageId))
             {
                 await _messageService.EditMessage(message);
@@ -36,6 +39,8 @@ namespace Hubs
             {
                 await _messageService.CreateMessage(message);
             }
+
+            await Clients.All.SendAsync("RecieveMessage", message);
         }
 
         public async Task NotifyNewRoom(Room room)

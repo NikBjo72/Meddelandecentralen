@@ -44,15 +44,8 @@ export const RoomHeader = (props) => {
         RoomStatus();
     },[roomStatus])
 
-    useEffect(() => {
-        console.log('props.thisRoom.status:', props.thisRoom.status);
-    })
-
     const handleStatus = (event) => {
         props.thisRoom.status = event.target.id;
-        // (async () => {
-        //     EditRoom(props.thisRoom.roomId, props.thisRoom);
-        // })()
         connection.invoke("NotifyNewRoom", props.thisRoom).catch(function (err) {
             return console.error(err.toString());
         });
