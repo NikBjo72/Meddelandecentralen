@@ -14,10 +14,10 @@ margin-left: .8rem !important;
     padding: 1rem;
     color: rgb(0, 0, 0);
     position: relative;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 .newMessage {
-    border: #2c7cc8 solid 4px;
+    border: #2c7cc8 solid 5px;
 }
 
 .sb-right:before {

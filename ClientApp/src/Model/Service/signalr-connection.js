@@ -6,6 +6,9 @@ export const startConnection = async () => {
     try {
       await connection.start();
       console.log('SignalR connected.');
+      connection.invoke("AddToGroup").catch(function (err) {
+        return console.error(err.toString());
+    });
       return connection.connection.connectionId;
     } catch (err) {
       console.log(err);
