@@ -12,6 +12,7 @@ import * as geoAltFill from '../../../Media/geo-alt-fill.svg';
 import * as sortDown from '../../../Media/sort-down-alt.svg';
 import * as sortUp from '../../../Media/sort-up-alt.svg';
 import * as search from '../../../Media/search.svg';
+import * as threeDots from '../../../Media/three-dots.svg'
 
 const imageUrl = {
     chatBubbles,
@@ -27,6 +28,7 @@ const imageUrl = {
     geoAltFill,
     sortDown,
     sortUp,
-    search
+    search,
+    threeDots
 }
 export default imageUrl

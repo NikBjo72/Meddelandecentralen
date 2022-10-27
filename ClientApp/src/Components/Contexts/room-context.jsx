@@ -7,6 +7,7 @@ const RoomContext = createContext();
 export const RoomContextProvider = (props) => {
   const [rooms, setRooms] = useState();
   const [newRoom, setNewRoom] = useState();
+  const [deleteRoomId, setDeleteRoomId] = useState();
 
   useEffect(() => {
     (async () => {
@@ -16,7 +17,25 @@ export const RoomContextProvider = (props) => {
     connection.on("RecieveRoom", (room) => {
       setNewRoom(room);
     });
+
+    connection.on("DeleteRoom", (roomId) => {
+      setDeleteRoomId(roomId);
+    });
   }, []);
+
+  useEffect(() => {
+    if(deleteRoomId) {
+      const indexOfRoom = rooms.findIndex(room => {
+        return room.roomId === deleteRoomId;
+      });
+      var newRooms = [...rooms];
+      newRooms.splice(indexOfRoom, 1);
+      console.log('newRooms:', newRooms);
+      setRooms(newRooms);
+      setDeleteRoomId();
+    }
+
+  }, [deleteRoomId])
 
   useEffect(() => {
       // Checks if room already exist and replace it if roomId aready is in rooms

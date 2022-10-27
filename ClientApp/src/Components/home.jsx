@@ -54,7 +54,7 @@ export const Home = (props) => {
                 </div>
             </div>
             {/* Mappar ut alla rummen som finns i API:et */}
-            {rooms ?
+            {rooms?
                 rooms.map((room) => {
                     return (
                         <RoomBtn key={room.roomId} status={room.status} name={room.name} newMessages={0} roomId={room.roomId} />

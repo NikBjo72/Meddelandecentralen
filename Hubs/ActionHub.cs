@@ -42,5 +42,11 @@ namespace Hubs
                 await _roomService.CreateRoom(room);
             }
         }
+
+        public async Task NotifyDeleteRoom(string roomId)
+        {
+            await _roomService.DeleteRoom(roomId);
+            await Clients.All.SendAsync("DeleteRoom", roomId);   
+        }
     }
 }
