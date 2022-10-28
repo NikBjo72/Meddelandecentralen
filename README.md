@@ -1,5 +1,17 @@
 # Meddelandecentralen
 En meddelandeapplikation för Concorde Hotel New York, för att kunna diskutera och meddela problem, status eller åtgärdade problem i olika rum/utrymmen.
+
+## Förbered applikationen
+> För att applikationen ska fungera måste npm ocg ASP.NET Core 5.0 vara installerade på datorn.
+>1. Ladda ner källkoden genom att, på GitHub clicka på knappen Code och välja Download Zip. (För Projekt Meddelandecentralen: Överlämning välj taggen "inlamning")
+>2. Packa upp Zipfilen.  
+>3. Öppna/gå in i mappen /Meddelandecentralen-inlamning/ClientApp via en terninal (i kodeditorn eller separat) och skriv: npm ci
+
+## Starta applikationen
+>1. Öppna mappen /Meddelandecentralen-inlamning/ClientApp i terminalen eller terminalen i kodeditor och skriv: npm start
+>2. Öppna mappen /Meddelandecentralen-inlamning/ i terminalen eller terminalen i kodeditor och skriv: dotnet run
+>3. Öppna en webbläsare och adressfältet skriv in https://localhost:5001/. (Kan vara så att du behöver lägga till ett undantag för ej säker sida)
+
 ## Beskrivning av vald lösning
 >Min tanke är att göra en hybridlösning av punkt **två** samt **tre** bland förslagen från VD:n.  
 Varför jag vill göra en hybrid är med tanke på UX.   
