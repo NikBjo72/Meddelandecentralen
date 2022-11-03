@@ -5,12 +5,13 @@ En meddelandeapplikation för Concorde Hotel New York, för att kunna diskutera 
 > För att applikationen ska fungera måste npm ocg ASP.NET Core 5.0 vara installerade på datorn.
 >1. Ladda ner källkoden genom att, på GitHub clicka på knappen Code och välja Download Zip. (För Projekt Meddelandecentralen: Överlämning välj taggen "inlamning")
 >2. Packa upp Zipfilen.  
->3. Öppna/gå in i mappen /Meddelandecentralen-inlamning/ClientApp via en terninal (i kodeditorn eller separat) och skriv: npm ci
+>3. Öppna/gå in i mappen /Meddelandecentralen-inlamning/ClientApp via en terninal (i kodeditorn eller separat) och skriv: npm ci (om du får "ERR!" så kan du behöva lägga till flaggan --legacy-peer-deps för att hämta senaste versioner)
 
 ## Starta applikationen
 >1. Öppna mappen /Meddelandecentralen-inlamning/ClientApp i terminalen eller terminalen i kodeditor och skriv: npm start
 >2. Öppna mappen /Meddelandecentralen-inlamning/ i terminalen eller terminalen i kodeditor och skriv: dotnet run
->3. Öppna en webbläsare och adressfältet skriv in https://localhost:5001/. (Kan vara så att du behöver lägga till ett undantag för ej säker sida)
+>3. Öppna en webbläsare och adressfältet skriv in https://localhost:5001/ (Kan vara så att du behöver lägga till ett undantag för ej säker sida).   
+Om det är första gången du öppnar appen efter installation behöver du uppdatera sidan en gång för att appen ska hämta mockade rum. Det är för att sqlite skapar en databasfil första gången appen körs.
 
 ## Beskrivning av vald lösning
 >Min tanke är att göra en hybridlösning av punkt **två** samt **tre** bland förslagen från VD:n.  
