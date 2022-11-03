@@ -1,0 +1,15 @@
+[Unit]
+Description=Meddelandecentralen Server
+
+[Service]
+WorkingDirectory=/root/var/www
+ExecStart=/snap/bin/dotnet /root/var/www/Meddelandecentralen.dll
+User=root
+SyslogIdentifier=MeddelandecentralenService
+Environment=ASPNETCORE_URLS="http://0.0.0.0:80;https://0.0.0.0:443"
+Environment=ASPNETCORE_ENVIRONMENT="Production"
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -2,9 +2,9 @@
   "name": "mddc-client-app",
   "version": "1.0.0",
   "description": "Meddelandecentralen klientapplikation",
-  "main": "index.js",
   "scripts": {
-    "start": "npx parcel src/index.html -p 1234 --hmr-port 1235"
+    "start": "npx parcel src/index.html -p 1234 --hmr-port 1235",
+    "build": "npx parcel build src/index.html"
   },
   "author": "Niklas Björk",
   "license": "ISC",

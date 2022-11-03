@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, createContext } from 'react';
 import { useStorageState } from 'react-storage-hooks';
 import { startConnection, stopConnection } from '../../Model/Service/signalr-connection';
 
-const UserContext = createContext();
+const UserContext = createContext({});
 
 export const UserContextProvider = (props) => {
   const [username, setUsername] = useStorageState(localStorage, 'username', [])
@@ -43,4 +43,4 @@ export const UserContextProvider = (props) => {
   );
 };
 // Export hook for the context.
-export default useUser = () => useContext(UserContext);
+export default () => useContext(UserContext);

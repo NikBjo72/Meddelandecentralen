@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, createContext } from 'react';
 import { connection } from '../../Model/Service/signalr-connection';
 import { GetRooms } from '../../Model/Service/api-request';
 
-const RoomContext = createContext();
+const RoomContext = createContext({});
 
 export const RoomContextProvider = (props) => {
   const [rooms, setRooms] = useState();
@@ -72,4 +72,4 @@ export const RoomContextProvider = (props) => {
   );
 };
 // Export hook for the context.
-export default useRoom = () => useContext(RoomContext);
+export default () => useContext(RoomContext);

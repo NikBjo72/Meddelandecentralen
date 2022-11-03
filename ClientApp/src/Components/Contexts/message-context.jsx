@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, createContext } from 'react';
 import { GetMessages } from '../../Model/Service/api-request';
 import { connection } from '../../Model/Service/signalr-connection';
 
-const MessageContext = createContext();
+const MessageContext = createContext({});
 
 export const MessageContextProvider = (props) => {
   const [messages, setMessages] = useState()
@@ -52,4 +52,4 @@ export const MessageContextProvider = (props) => {
   );
 };
 // Export hook for the context.
-export default useMessage = () => useContext(MessageContext);
+export default () => useContext(MessageContext);
