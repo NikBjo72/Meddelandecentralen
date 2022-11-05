@@ -1,0 +1,9 @@
+1: 5/5p — Ok 
+2: 10/10p — Bra 
+3: 20/20p — Finns 
+4: 18/20p — Mycket bra! Bra detalj-nivå, är dock lite osäker på varför Footer renderas av AllMessages, Room, och Home? Känns som något som kan förbättras. 
+5: 15/15p — Mycket bra! 
+6: 20/20p — Ok 
+7: 10/10p — Bra! 
+
+POÄNG: 98p 
